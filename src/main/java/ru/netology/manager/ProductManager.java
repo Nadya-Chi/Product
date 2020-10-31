@@ -13,6 +13,15 @@ public class ProductManager {
         this.repository = repository;
     }
 
+    public void add(Product product) {
+        int length = items.length + 1;
+        Product[] tmp = new Product[length];
+        System.arraycopy(items, 0, tmp, 0, items.length);
+        int lastIndex = tmp.length - 1;
+        tmp[lastIndex] = product;
+        items = tmp;
+    }
+
     public Product[] searchBy(String text) {
         Product[] result = new Product[0];
         for (Product product: repository.findAll()) {
