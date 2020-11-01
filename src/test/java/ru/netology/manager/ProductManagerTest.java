@@ -23,8 +23,8 @@ public class ProductManagerTest {
     @InjectMocks
     ProductManager productManager;
 
-    private Product first = new Book(1, "poems", 500, "Pushkin");
-    private Product second = new Book(2, "prose", 250,  "Chekhov");
+    private Product first = new Book(1, "Poems", 250, "Pushkin");
+    private Product second = new Book(2, "Prose", 250,  "Chekhov");
     private Product third = new Smartphone(3, "Apple", 50000, "USA");
 
     @BeforeEach
@@ -35,7 +35,7 @@ public class ProductManagerTest {
     }
 
     @Test
-    public void checkSearchProductName() {
+    public void checkSearchSmartphoneName() {
         Product[] returned = new Product[] {first,second,third};
         doReturn(returned).when(productRepository).findAll();
 
@@ -46,7 +46,29 @@ public class ProductManagerTest {
     }
 
     @Test
-    public void checkSearchProductAuthor() {
+    public void checkSearchSmartphoneMade() {
+        Product[] returned = new Product[] {first,second,third};
+        doReturn(returned).when(productRepository).findAll();
+
+        Product[] expected = new Product[]{third};
+        Product[] actual = productManager.searchBy("USA");
+
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void checkSearchBookName() {
+        Product[] returned = new Product[] {first,second,third};
+        doReturn(returned).when(productRepository).findAll();
+
+        Product[] expected = new Product[]{second};
+        Product[] actual = productManager.searchBy("Prose");
+
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void checkSearchBookAuthor() {
         Product[] returned = new Product[] {first,second,third};
         doReturn(returned).when(productRepository).findAll();
 
@@ -66,4 +88,5 @@ public class ProductManagerTest {
 
         assertArrayEquals(expected, actual);
     }
+
 }
