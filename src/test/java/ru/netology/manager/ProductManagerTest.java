@@ -19,8 +19,8 @@ public class ProductManagerTest {
     @InjectMocks
     ProductManager productManager;
 
-    private Product first = new Book(1, "recipes", 500, "Korea");
-    private Product second = new Book(2, "notebook", 250,  "Agatha Christie");
+    private Product first = new Book(1, "poems", 500, "Pushkin");
+    private Product second = new Book(2, "prose", 250,  "Chekhov");
     private Product third = new Smartphone(3, "Apple", 50000, "USA");
 
     @BeforeEach
