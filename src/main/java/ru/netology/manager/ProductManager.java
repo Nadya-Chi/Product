@@ -15,12 +15,6 @@ public class ProductManager {
 
     public void add(Product item) {
         repository.save(item);
-//        int length = items.length + 1;
-//        Product[] tmp = new Product[length];
-//        System.arraycopy(items, 0, tmp, 0, items.length);
-//        int lastIndex = tmp.length - 1;
-//        tmp[lastIndex] = product;
-//        items = tmp;
     }
 
     public Product[] searchBy(String text) {

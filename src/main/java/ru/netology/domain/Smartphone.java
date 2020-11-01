@@ -18,16 +18,4 @@ public class Smartphone extends Product{
         this.made = made;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Smartphone that = (Smartphone) o;
-        return made.equals(that.made);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(made);
-    }
 }
