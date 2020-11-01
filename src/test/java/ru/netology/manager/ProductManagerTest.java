@@ -1,6 +1,7 @@
 package ru.netology.manager;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -9,6 +10,9 @@ import ru.netology.domain.Book;
 import ru.netology.domain.Product;
 import ru.netology.domain.Smartphone;
 import ru.netology.repository.ProductRepository;
+
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.mockito.Mockito.doReturn;
 
 @ExtendWith(MockitoExtension.class)
 public class ProductManagerTest {
@@ -28,5 +32,38 @@ public class ProductManagerTest {
         productManager.add(first);
         productManager.add(second);
         productManager.add(third);
+    }
+
+    @Test
+    public void checkSearchProductName() {
+        Product[] returned = new Product[] {first,second,third};
+        doReturn(returned).when(productRepository).findAll();
+
+        Product[] expected = new Product[]{third};
+        Product[] actual = productManager.searchBy("Apple");
+
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void checkSearchProductAuthor() {
+        Product[] returned = new Product[] {first,second,third};
+        doReturn(returned).when(productRepository).findAll();
+
+        Product[] expected = new Product[]{first};
+        Product[] actual = productManager.searchBy("Pushkin");
+
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void checkSearchProductWhichIsNot() {
+        Product[] returned = new Product[] {first,second,third};
+        doReturn(returned).when(productRepository).findAll();
+
+        Product[] expected = new Product[]{};
+        Product[] actual = productManager.searchBy("Russia");
+
+        assertArrayEquals(expected, actual);
     }
 }
