@@ -19,19 +19,6 @@ public class Book extends Product{
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Book book = (Book) o;
-        return author.equals(book.author);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(author);
-    }
-
-    @Override
     public boolean matches(String search) {
         return super.matches(search) || search.equals(this.author);
     }

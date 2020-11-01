@@ -15,12 +15,6 @@ public class ProductManager {
 
     public void add(Product item) {
         repository.save(item);
-//        int length = items.length + 1;
-//        Product[] tmp = new Product[length];
-//        System.arraycopy(items, 0, tmp, 0, items.length);
-//        int lastIndex = tmp.length - 1;
-//        tmp[lastIndex] = product;
-//        items = tmp;
     }
 
     public Product[] searchBy(String text) {
@@ -36,25 +30,4 @@ public class ProductManager {
         return result;
     }
 
-//    public boolean matches(Product product, String search) {
-//        if (product instanceof Book) {
-//            Book book = (Book) product;
-//            if (book.getName().equalsIgnoreCase(search)) {
-//                return true;
-//            }
-//            if (book.getAuthor().equalsIgnoreCase(search)) {
-//                return true;
-//            }
-//        }
-//        if (product instanceof Smartphone) {
-//            Smartphone smartphone = (Smartphone) product;
-//            if (smartphone.getName().equalsIgnoreCase(search)) {
-//                return true;
-//            }
-//            if (smartphone.getMade().equalsIgnoreCase(search)) {
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
 }
